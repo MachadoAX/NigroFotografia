@@ -72,19 +72,24 @@
       object-fit: contain;
       object-position: bottom center;
     }
-    /* Mobile < 600px: foto à esquerda, botão centralizado ao lado do Ricardo */
+    /* Mobile < 600px: foto à esquerda colada na galeria, botão ao lado */
     @media (max-width: 599px) {
+      #topo {
+        overflow: hidden;
+      }
       .hero-grid {
         display: flex !important;
         flex-direction: column;
         position: relative;
-        min-height: 100vh;
+        min-height: 0 !important;
+        height: auto !important;
+        gap: 0 !important;
       }
       .hero-content {
         position: relative;
         z-index: 10;
-        padding-top: 1.75rem;
-        padding-bottom: 0.5rem;
+        padding-top: 1.5rem;
+        padding-bottom: 0.75rem;
         flex: 0 0 auto;
         order: 1 !important;
       }
@@ -97,29 +102,40 @@
         position: relative;
         display: flex !important;
         flex-direction: row;
-        align-items: center;
+        align-items: flex-end;
         justify-content: space-between;
         width: 100%;
-        flex: 1 1 auto;
-        min-height: 42vh;
+        flex: 0 0 auto;
+        height: auto;
+        min-height: 0;
         z-index: 2;
-        padding: 0 0.5rem 0.5rem 0;
+        /* div um pouco maior que a imagem, sem espaço abaixo */
+        padding: 0.5rem 0 0 0;
+        margin: 0;
         gap: 0.5rem;
+        line-height: 0;
       }
       .hero-photo-wrap img {
-        max-height: 42vh;
-        max-width: 52%;
+        display: block;
+        max-height: 38vh;
+        max-width: 54%;
         width: auto;
+        height: auto;
         object-fit: contain;
         object-position: bottom left;
         align-self: flex-end;
+        margin: 0;
+        padding: 0;
+        vertical-align: bottom;
       }
       .hero-btns-mobile {
         display: flex !important;
         align-items: center;
         justify-content: center;
         flex: 1;
-        padding-right: 0.5rem;
+        padding-right: 0.75rem;
+        padding-bottom: 1.25rem;
+        align-self: center;
       }
       .hero-btns-mobile a {
         font-size: 0.8rem;
