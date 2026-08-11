@@ -72,51 +72,64 @@
       object-fit: contain;
       object-position: bottom center;
     }
-    /* Mobile < 600px: foto à esquerda, botão orçamento à direita */
+    /* Mobile < 600px: foto à esquerda, botão centralizado ao lado do Ricardo */
     @media (max-width: 599px) {
       .hero-grid {
-        display: block !important;
+        display: flex !important;
+        flex-direction: column;
         position: relative;
         min-height: 100vh;
       }
       .hero-content {
         position: relative;
         z-index: 10;
-        padding-top: 2rem;
-        padding-bottom: 11rem;
+        padding-top: 1.75rem;
+        padding-bottom: 0.5rem;
+        flex: 0 0 auto;
+        order: 1 !important;
+      }
+      /* Esconde o botão dentro do conteúdo no mobile — usa o da área da foto */
+      .hero-content .hero-btns {
+        display: none !important;
       }
       .hero-photo-wrap {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 55%;
-        height: 50%;
-        z-index: 2;
-        justify-content: flex-start;
-        align-items: flex-end;
-        padding-left: 0.25rem;
-      }
-      .hero-photo-wrap img {
-        max-height: 46vh;
-        max-width: 100%;
-        width: auto;
-      }
-      .hero-btns {
-        position: absolute !important;
-        right: 0.75rem;
-        bottom: 1.5rem;
-        z-index: 10;
+        order: 2 !important;
+        position: relative;
         display: flex !important;
-        flex-direction: column;
-        align-items: flex-end;
-        justify-content: flex-end;
-        margin: 0 !important;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        flex: 1 1 auto;
+        min-height: 42vh;
+        z-index: 2;
+        padding: 0 0.5rem 0.5rem 0;
         gap: 0.5rem;
       }
-      .hero-btns a {
+      .hero-photo-wrap img {
+        max-height: 42vh;
+        max-width: 52%;
+        width: auto;
+        object-fit: contain;
+        object-position: bottom left;
+        align-self: flex-end;
+      }
+      .hero-btns-mobile {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        padding-right: 0.5rem;
+      }
+      .hero-btns-mobile a {
         font-size: 0.8rem;
-        padding: 0.55rem 1rem;
+        padding: 0.6rem 1.1rem;
         white-space: nowrap;
+      }
+    }
+    @media (min-width: 600px) {
+      .hero-btns-mobile {
+        display: none !important;
       }
     }
     /* About photo stuck to bottom, black bg, no padding */
@@ -173,9 +186,16 @@
             </a>
           </div>
         </div>
-        <!-- Photo — colada no bottom; no mobile fica atrás da logo -->
+        <!-- Photo — no mobile: à esquerda, botão ao lado centralizado -->
         <div class="order-1 lg:order-2 hero-photo-wrap">
           <img src="hero.png" alt="Ricardo Nigro — Fotógrafo" />
+          <div class="hero-btns-mobile">
+            <a href="https://wa.me/5581979130160?text=Olá%20Ricardo%2C%20gostaria%20de%20solicitar%20um%20orçamento"
+               target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 border-2 border-brand-dark/20 hover:border-brand-red text-brand-dark font-semibold rounded-full transition">
+              Solicitar Orçamento
+            </a>
+          </div>
         </div>
       </div>
     </div>
