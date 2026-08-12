@@ -64,6 +64,7 @@
       align-items: flex-end;
       justify-content: center;
       height: 100%;
+      position: relative;
     }
     .hero-photo-wrap img {
       display: block;
@@ -71,6 +72,67 @@
       width: auto;
       object-fit: contain;
       object-position: bottom center;
+      position: relative;
+      z-index: 1;
+    }
+    /* Flash de fotografia na hero.png (desktop) */
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 35%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.4) 35%, transparent 70%);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
+      animation: photo-flash 4s ease-in-out infinite;
+    }
+    @keyframes photo-flash {
+      0%, 88%, 100% { opacity: 0; }
+      90% { opacity: 1; }
+      92% { opacity: 0.15; }
+      94% { opacity: 0.7; }
+      96% { opacity: 0; }
+    }
+    /* Pacotes — lista alinhada */
+    .package-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-width: 360px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .package-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      text-align: left;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+    .package-list li:last-child {
+      border-bottom: none;
+    }
+    .package-list li span.dot {
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #c8102e;
+    }
+    .tab-panel {
+      text-align: center;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .tab-panel.hidden {
+      display: none;
     }
     /* Mobile hero: 2 colunas — esq foto | dir logo + botão */
     .hero-mobile {
@@ -344,49 +406,49 @@
       </div>
 
       <!-- Tab panels -->
-      <div class="bg-brand-card border border-white/5 rounded-2xl p-6 sm:p-8 min-h-[280px]">
+      <div class="bg-brand-card border border-white/5 rounded-2xl p-6 sm:p-8">
         <div id="tab-pacote1" class="tab-panel">
-          <h3 class="text-xl font-bold mb-4 text-white">Pacote 1</h3>
-          <ul class="space-y-3 text-slate-300 mb-6">
-            <li class="flex items-start gap-2"><span class="text-brand-red mt-0.5">•</span> Até 2h de sessão fotográfica</li>
-            <li class="flex items-start gap-2"><span class="text-brand-red mt-0.5">•</span> Até 2 looks</li>
-            <li class="flex items-start gap-2"><span class="text-brand-red mt-0.5">•</span> 10 fotos tratadas e editadas</li>
+          <h3 class="text-xl font-bold mb-6 text-white">Pacote 1</h3>
+          <ul class="package-list">
+            <li><span class="dot"></span> Até 2h de sessão fotográfica</li>
+            <li><span class="dot"></span> Até 2 looks</li>
+            <li><span class="dot"></span> 10 fotos tratadas e editadas</li>
           </ul>
         </div>
 
         <div id="tab-pacote2" class="tab-panel hidden">
-          <h3 class="text-xl font-bold mb-4 text-white">Pacote 2</h3>
-          <ul class="space-y-3 text-slate-300 mb-6">
-            <li class="flex items-start gap-2"><span class="text-brand-red mt-0.5">•</span> Até 3h de sessão fotográfica</li>
-            <li class="flex items-start gap-2"><span class="text-brand-red mt-0.5">•</span> Até 4 looks</li>
-            <li class="flex items-start gap-2"><span class="text-brand-red mt-0.5">•</span> 15 fotos tratadas e editadas</li>
+          <h3 class="text-xl font-bold mb-6 text-white">Pacote 2</h3>
+          <ul class="package-list">
+            <li><span class="dot"></span> Até 3h de sessão fotográfica</li>
+            <li><span class="dot"></span> Até 4 looks</li>
+            <li><span class="dot"></span> 15 fotos tratadas e editadas</li>
           </ul>
         </div>
 
         <div id="tab-pacote3" class="tab-panel hidden">
-          <h3 class="text-xl font-bold mb-4 text-white">Pacote 3</h3>
-          <ul class="space-y-3 text-slate-300 mb-6">
-            <li class="flex items-start gap-2"><span class="text-brand-red mt-0.5">•</span> Até 4h de sessão fotográfica</li>
-            <li class="flex items-start gap-2"><span class="text-brand-red mt-0.5">•</span> Até 5 looks</li>
-            <li class="flex items-start gap-2"><span class="text-brand-red mt-0.5">•</span> 20 fotos tratadas e editadas</li>
-            <li class="flex items-start gap-2"><span class="text-brand-red mt-0.5">•</span> Maquiagem + Penteado</li>
+          <h3 class="text-xl font-bold mb-6 text-white">Pacote 3</h3>
+          <ul class="package-list">
+            <li><span class="dot"></span> Até 4h de sessão fotográfica</li>
+            <li><span class="dot"></span> Até 5 looks</li>
+            <li><span class="dot"></span> 20 fotos tratadas e editadas</li>
+            <li><span class="dot"></span> Maquiagem + Penteado</li>
           </ul>
         </div>
 
         <div id="tab-pagamento" class="tab-panel hidden">
-          <h3 class="text-xl font-bold mb-4 text-white">Forma de Pagamento</h3>
-          <ul class="space-y-3 text-slate-300 mb-6">
-            <li class="flex items-start gap-2"><span class="text-brand-red mt-0.5">•</span> PIX</li>
-            <li class="flex items-start gap-2"><span class="text-brand-red mt-0.5">•</span> Cartão em até 12x (com juros) no agendamento</li>
-            <li class="flex items-start gap-2"><span class="text-brand-red mt-0.5">•</span> 50% no agendamento / 50% no dia do ensaio</li>
+          <h3 class="text-xl font-bold mb-6 text-white">Forma de Pagamento</h3>
+          <ul class="package-list">
+            <li><span class="dot"></span> PIX</li>
+            <li><span class="dot"></span> Cartão em até 12x (com juros) no agendamento</li>
+            <li><span class="dot"></span> 50% no agendamento / 50% no dia do ensaio</li>
           </ul>
-          <div class="bg-brand-red/10 border border-brand-red/30 rounded-xl p-4 mb-6">
+          <div class="bg-brand-red/10 border border-brand-red/30 rounded-xl p-4 mt-6 max-w-md mx-auto text-left">
             <p class="text-sm sm:text-base font-semibold text-white leading-relaxed">
               Em caso de não comparecimento ou remarcação em menos de 48h será cobrada multa de 50% do valor do ensaio!
             </p>
           </div>
-          <h4 class="text-lg font-semibold text-white mb-2">Da entrega</h4>
-          <p class="text-slate-300 text-sm sm:text-base">
+          <h4 class="text-lg font-semibold text-white mt-6 mb-2">Da entrega</h4>
+          <p class="text-slate-300 text-sm sm:text-base max-w-md mx-auto">
             As fotos serão entregues até 72h após a finalização da seleção.
           </p>
         </div>
