@@ -159,6 +159,17 @@
         background: #fff;
         overflow: hidden;
       }
+      /* Flash de fotografia no mobile */
+      .hero-mobile::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 35% 40%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.35) 40%, transparent 70%);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 3;
+        animation: photo-flash 4s ease-in-out infinite;
+      }
       /* FOTO — absolute, z-index 1, na frente da logo */
       .hero-mobile > img.hero-mobile-photo {
         position: absolute;
